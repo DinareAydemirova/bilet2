@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 50px 0;
+  }
+  .line {
+    border: 1px solid orange;
+    width: 400px;
+    height: 0;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 10px;
+  }
+  .menu {
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 40px 0;
+   
+    .price {
+      display: flex;
+      margin-top: 20px;
+    }
+    .ingredient{
+        font-size: 15px;
+    }
+  }
+}
