@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container .top {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px 0;
+  font-size: 40px;
+}
+.container .info {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  font-size: 20px;
+}/*# sourceMappingURL=welcome.module.css.map */

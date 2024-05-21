@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import style from "./admin.module.scss";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../redux/slices/productSlices";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
-    const dispatch=useDispatch()
-    const products=useSelector((state)=>state.products)
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.get("/products").then((response) => {
       setData(response.data);
-      console.log(data);
     });
   }, []);
-  
+
+  const deleteProduct = async (id) => {
+    await axios.delete(`products/${id}`);
+    setData(data.filter((product) => product._id !== id));
+  };
 
   return (
     <div className="relative overflow-x-auto">
@@ -44,7 +43,7 @@ const Admin = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((elem) => {
+          {data?.map((elem) => {
             return (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -57,27 +56,38 @@ const Admin = () => {
                 <td className="px-6 py-4">{elem.price}</td>
                 <td>
                   <button
-                    class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                    className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                     type="submit"
+                    onClick={() => deleteProduct(elem._id)}
                   >
                     Delete
                   </button>
                 </td>
                 <td>
-                  <button class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                  <Link to="/edit" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
                     Edit
-                  </button>
+                  </Link>
                 </td>
                 <td>
-                  <button class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900">
+                  <Link
+                    className="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
+                    to={`/products/${elem._id}`}
+                  >
                     Detail
-                  </button>
+                  </Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <Link
+        type="button"
+        to="/post"
+        className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      >
+        Post
+      </Link>
     </div>
   );
 };
