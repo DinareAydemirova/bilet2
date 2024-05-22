@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.container .menu {
+  border: 1px solid black;
+  padding: 20px;
+}
+.container .fav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.container .count {
+  display: flex;
+}
+
+.deleteall {
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  margin: 20px;
+  border-radius: 8px;
+}/*# sourceMappingURL=basket.module.css.map */

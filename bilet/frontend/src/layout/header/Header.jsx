@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaPhone } from "react-icons/fa6";
 import style from "./header.module.scss";
+import { SlBasket } from "react-icons/sl";
+import { useSelector } from "react-redux";
+import { FcLike } from "react-icons/fc";
 
 const Header = () => {
+  const total=useSelector(state=>state.basket.total)
+  const wishlist=useSelector((state)=>state.wishlist.wishlist)
+
+
+  
   return (
     <div className={style.hero}>
       <div className={style.container}>
@@ -14,11 +22,16 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="">About us</Link>
+              <Link to="/basket">
+                <SlBasket />
+              </Link>
             </li>
+            <div>{total}</div>
+
             <li>
-              <Link to="">Restarant</Link>
+              <Link to="/wishlist">Wishlist</Link>
             </li>
+            <div>{wishlist.length}</div>
           </ul>
           <div className={style.contact}>
             <p>Reservations </p>

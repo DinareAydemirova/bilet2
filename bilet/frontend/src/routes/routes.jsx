@@ -4,6 +4,8 @@ import Admin from "../pages/admin/Admin";
 import Detail from "../pages/admin/detail/Detail";
 import Edit from "../pages/admin/edit/Edit";
 import Post from "../pages/admin/postData/Post";
+import Wishlist from "../pages/admin/wishlist/Wishlist";
+import Basket from "../pages/basket/Basket";
 
 const router = [
   {
@@ -13,6 +15,14 @@ const router = [
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/basket",
+        element: <Basket />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
       },
     ],
   },

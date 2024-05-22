@@ -38,4 +38,21 @@
 }
 .container .menu .ingredient {
   font-size: 15px;
+}
+.container .sort {
+  background-color: brown;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 8px;
+}
+.container .func {
+  display: flex;
+  align-items: center;
+}
+.container .func .basket {
+  background-color: orange;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
 }/*# sourceMappingURL=products.module.css.map */
